@@ -25,8 +25,8 @@ public class DisableViewPagerTouchOnScrollBehaviour extends AppBarLayout.Behavio
     }
 
     @Override
-    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes) {
-        boolean scroll = super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes);
+    public boolean onStartNestedScroll(CoordinatorLayout parent, AppBarLayout child, View directTargetChild, View target, int nestedScrollAxes, int type) {
+        boolean scroll = super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes, type);
         if (scroll && directTargetChild instanceof ViewPager) {
             pager = (ViewPager) directTargetChild;
             if (mTouchSlop < 0) {
@@ -37,8 +37,8 @@ public class DisableViewPagerTouchOnScrollBehaviour extends AppBarLayout.Behavio
     }
 
     @Override
-    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dx, int dy, int[] consumed) {
-        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed);
+    public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, AppBarLayout child, View target, int dx, int dy, int[] consumed, int type) {
+        super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type);
         if (pager != null && consumed[1] > 0) {
             totalYConsumed += consumed[1];
             if (totalYConsumed > mTouchSlop) {
@@ -48,8 +48,8 @@ public class DisableViewPagerTouchOnScrollBehaviour extends AppBarLayout.Behavio
     }
 
     @Override
-    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl, View target) {
-        super.onStopNestedScroll(coordinatorLayout, abl, target);
+    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, AppBarLayout abl, View target, int type) {
+        super.onStopNestedScroll(coordinatorLayout, abl, target, type);
         if (pager != null) {
             pager.requestDisallowInterceptTouchEvent(false);
             pager = null;

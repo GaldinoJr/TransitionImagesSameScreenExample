@@ -211,8 +211,9 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
         //do not scale to 0
         float newTop = top / 1.2F;
         float scale = (total - newTop) / (float) total;
-        ViewCompat.setScaleX(this, scale);
-        ViewCompat.setScaleY(this, scale);
+        View v = this;
+        v.setScaleX(scale);
+        v.setScaleY(scale);
         int tabCount = mIconsLayout.getChildCount();
 
         //alpha can be zero
@@ -221,7 +222,8 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
         for (int i = 0; i < tabCount; i++) {
             View parent = mIconsLayout.getChildAt(i);
             View child = parent.findViewById(R.id.foreground);
-            ViewCompat.setAlpha(child, alpha);
+            child.setAlpha(alpha);
+//            ViewCompat.setAlpha(child, alpha);
         }
         updateScroll();
     }

@@ -11,7 +11,6 @@ import com.example.nemes.transitionimagessamescreenexample.R;
 import com.viewpagerindicator.PageIndicator;
 
 public class DetailActivity extends AppCompatActivity {
-    private PageIndicator indicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,13 +19,14 @@ public class DetailActivity extends AppCompatActivity {
             getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         }
         setContentView(R.layout.activity_detail);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(new IconAdapter(this, getSupportFragmentManager()));
-        indicator = (PageIndicator) findViewById(R.id.indicator);
+        PageIndicator indicator = (PageIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(pager);
         pager.setCurrentItem(getIntent().getIntExtra("position", 0), false);
         supportPostponeEnterTransition();
