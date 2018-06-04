@@ -152,6 +152,7 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
                 view.setTransitionName("tab_" + i);
             }
             view.setImageResource(iconAdapter.getIconResId(i));
+
             if (changePadding) {
                 //assuming that every indicator will have same size
                 changePadding = false;
@@ -192,16 +193,22 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
         mViewPager.setCurrentItem(item);
 
         int tabCount = mIconsLayout.getChildCount();
+        IconPagerAdapter iconAdapter = (IconPagerAdapter) mViewPager.getAdapter();
         for (int i = 0; i < tabCount; i++) {
             View child = mIconsLayout.getChildAt(i);
             boolean isSelected = (i == item);
             child.setSelected(isSelected);
             View foreground = child.findViewById(R.id.foreground);
+            ImageView imageView = child.findViewById(R.id.icon);
             if (isSelected) {
                 animateToIcon(item);
-                foreground.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.fg_white));
+                foreground.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_white));
+                imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_white));
+//                imageView.setImageResource(R.drawable.icone_gluteo);
             } else {
-                foreground.setBackgroundDrawable(ContextCompat.getDrawable(getContext(), R.drawable.fg_gray));
+                foreground.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_gray));
+                imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_gray));
+//                imageView.setImageResource(iconAdapter.getIconResId(i));
             }
         }
     }

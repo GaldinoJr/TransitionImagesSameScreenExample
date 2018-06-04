@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    >
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -20,16 +21,19 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="240dp"
             android:fitsSystemWindows="true"
             app:elevation="0dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@android:color/holo_red_dark">
+            app:contentScrim="@color/cor_preto_toolbar">
             <!--dummy view-->
-            <View
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:fitsSystemWindows="true"/>
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/foto_corpo_comprimida_preto_branco"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
