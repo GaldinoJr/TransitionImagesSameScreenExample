@@ -12,7 +12,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:scaleType="fitCenter"
-        android:background="@drawable/fg_white"
+        android:background="@drawable/background_select_item_menu"
         android:padding="12dp"
         tools:src="@drawable/ic_abdomen_lista_sm"/>
 

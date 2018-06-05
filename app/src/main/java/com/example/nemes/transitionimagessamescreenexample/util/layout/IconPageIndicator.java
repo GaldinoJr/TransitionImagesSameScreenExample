@@ -9,7 +9,6 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -202,12 +201,12 @@ public class IconPageIndicator extends HorizontalScrollView implements PageIndic
             ImageView imageView = child.findViewById(R.id.icon);
             if (isSelected) {
                 animateToIcon(item);
-                foreground.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_white));
-                imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_white));
+                foreground.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.background_select_item_menu));
+                imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.background_select_item_menu));
 //                imageView.setImageResource(R.drawable.icone_gluteo);
             } else {
-                foreground.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_gray));
-                imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.fg_gray));
+                foreground.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.background_desselect_item_menu));
+                imageView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.background_desselect_item_menu));
 //                imageView.setImageResource(iconAdapter.getIconResId(i));
             }
         }
